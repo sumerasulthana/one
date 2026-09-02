@@ -714,4 +714,55 @@
     });
 
     document.getElementById('shopNow').addEventListener('click', () => {
-      document.getElementById
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('exploreDeals').addEventListener('click', () => {
+      document.getElementById('deals').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('buyDeal').addEventListener('click', () => {
+      cartCount += 1;
+      updateCart();
+      alert('Deal added to cart (demo).');
+    });
+
+    // newsletter
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value.trim();
+      const msg = document.getElementById('newsletterMsg');
+      if (!email || !email.includes('@')) {
+        msg.style.display = 'block';
+        msg.textContent = 'Please enter a valid email.';
+        msg.style.color = '#ffb3b3';
+        return;
+      }
+      msg.style.display = 'block';
+      msg.textContent = '✅ Thanks! You\'re subscribed.';
+      msg.style.color = '#b8e6b8';
+      document.getElementById('newsletterEmail').value = '';
+      setTimeout(() => msg.style.display = 'none', 3000);
+    });
+
+    // deal timer
+    (function() {
+      const target = new Date(Date.now() + (24 * 60 + 36) * 60 * 1000);
+      function tick() {
+        const diff = target - new Date();
+        if (diff <= 0) return;
+        document.getElementById('dealDays').textContent = Math.floor(diff / (24*3600*1000));
+        document.getElementById('dealHours').textContent = String(Math.floor((diff % (24*3600*1000)) / (3600*1000))).padStart(2,'0');
+        document.getElementById('dealMinutes').textContent = String(Math.floor((diff % (3600*1000)) / (60*1000))).padStart(2,'0');
+        document.getElementById('dealSeconds').textContent = String(Math.floor((diff % (60*1000)) / 1000)).padStart(2,'0');
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    // init
+    renderCategories();
+    renderProducts(PRODUCTS);
+    updateCart();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
