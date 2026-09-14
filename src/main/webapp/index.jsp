@@ -618,7 +618,7 @@
         <p style="opacity:0.8;margin-bottom:18px;">Get exclusive offers & new arrivals</p>
         <form id="newsletterForm" style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
           <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
-          <button class="btn btn-primary" id="subscribeBtn"><i class="fas fa-envelope"></i> Subscribe</button>
+          <button class="btn btn-primary" id="subscribeBtn"><em class="fas fa-envelope"></em> Subscribe</button>
         </form>
         <div id="newsletterMsg" style="margin-top:14px;font-size:0.95rem;display:none;"></div>
       </div>
